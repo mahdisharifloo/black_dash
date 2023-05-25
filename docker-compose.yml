@@ -3,10 +3,16 @@ services:
   appseed-app:
     container_name: appseed_app
     restart: always
+    env_file: .env
     build: .
+    expose:
+      - '5058'
+      - '5005'
     networks:
       - db_network
       - web_network
+    depends_on: 
+      - db
   nginx:
     container_name: nginx
     restart: always
@@ -19,6 +25,31 @@ services:
       - web_network
     depends_on: 
       - appseed-app
+  db:
+    container_name: db
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASS}
+      MYSQL_ROOT_PASSWORD: ${DB_PASS}
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - my-db:/var/lib/mysql
+    networks:
+      - db_network
+      - web_network
+
+# Names our volume
+volumes:
+  my-db:
+  nginx:
+
+
 networks:
   db_network:
     driver: bridge
