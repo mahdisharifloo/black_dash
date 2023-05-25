@@ -1,0 +1,406 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block extrastyle %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-rtl.css" rel="stylesheet" />
+{% endblock extrastyle %}
+{% block bodyclass %}rtl menu-on-right{% endblock bodyclass %}
+{% block sidebar %}
+{% include 'includes/rtlsidebar.html' %}
+{% endblock sidebar %}
+{% block navigation %}
+{% include 'includes/navigationrtl.html' %}
+{% endblock navigation %}
+{% block content %}
+<div class="content">
+  <div class="row">
+    <div class="col-12">
+      <div class="card card-chart">
+        <div class="card-header ">
+          <div class="row">
+            <div class="col-sm-6 text-right">
+              <h5 class="card-category">تراکم تولید محتوا</h5>
+              <h2 class="card-title">حجم خبری</h2>
+            </div>
+            <div class="col-sm-6">
+              <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-sm btn-primary btn-simple active" id="0">
+                  <input type="radio" name="options" checked>
+                  <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block"> موافق</span>
+                  <span class="d-block d-sm-none">
+                    <i class="tim-icons icon-single-02"></i>
+                  </span>
+                </label>
+                <label class="btn btn-sm btn-primary btn-simple" id="1">
+                  <input type="radio" class="d-none d-sm-none" name="options">
+                  <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block"> مخالفین</span>
+                  <span class="d-block d-sm-none">
+                    <i class="tim-icons icon-gift-2"></i>
+                  </span>
+                </label>
+                <label class="btn btn-sm btn-primary btn-simple" id="2">
+                  <input type="radio" class="d-none" name="options">
+                  <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">میانه رو ها</span>
+                  <span class="d-block d-sm-none">
+                    <i class="tim-icons icon-tap-02"></i>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="chart-area">
+            <canvas id="chartBig1"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4 text-right">
+      <div class="card card-chart">
+        <div class="card-header">
+          <h5 class="card-category">اخبار مربوط به ارتش</h5>
+          <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> 763,215</h3>
+        </div>
+        <div class="card-body">
+          <div class="chart-area">
+            <canvas id="chartLinePurple"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 text-right">
+      <div class="card card-chart">
+        <div class="card-header">
+          <h5 class="card-category">اخبار مربوط به منافقین</h5>
+          <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info"></i> 3,500€</h3>
+        </div>
+        <div class="card-body">
+          <div class="chart-area">
+            <canvas id="CountryChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 text-right">
+      <div class="card card-chart">
+        <div class="card-header">
+          <h5 class="card-category">اخبار متفرقه</h5>
+          <h3 class="card-title"><i class="tim-icons icon-send text-success"></i> 12,100K</h3>
+        </div>
+        <div class="card-body">
+          <div class="chart-area">
+            <canvas id="chartLineGreen"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-sm-6 text-center">
+      <div class="card  card-tasks text-left">
+        <div class="card-header text-right">
+          <h6 class="title d-inline">برتین های</h6>
+          <p class="card-category d-inline">امروز</p>
+          <div class="dropdown float-left">
+            <a class="btn btn-link dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false"><i class="tim-icons icon-settings-gear-63"></i></a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="#">براساس زمان</a>
+              <a class="dropdown-item" href="#">براساس تعداد کامنت</a>
+              <a class="dropdown-item" href="#">براساس تعداد لایک</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body ">
+          <div class="table-full-width table-responsive">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td class="text-center">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="" checked>
+                        <span class="form-check-sign">
+                          <span class="check"></span>
+                        </span>
+                      </label>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <p class="title">بالگرد ارتش با ۱۰ خدمه مفقود شد</p>
+                    <p class="text-muted">افکار نیوز 9 ساعت پيش</p>
+                  </td>
+                  <td class="td-actions">
+                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
+                      <i class="tim-icons icon-settings"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-center">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="">
+                        <span class="form-check-sign">
+                          <span class="check"></span>
+                        </span>
+                      </label>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <p class="title">افشای نقشه اسرائیل برای حمله به تاسیسات هسته ای ایران /100 جنگنده به سمت ایران می روند</p>
+                    <p class="text-muted">اقتصاد نیوز 12 ساعت پيش </p>
+                  </td>
+                  <td class="td-actions">
+                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
+                      <i class="tim-icons icon-settings"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-center">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="">
+                        <span class="form-check-sign">
+                          <span class="check"></span>
+                        </span>
+                      </label>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <p class="title">رزمایش نظامی باکو در نزدیکی مرزهای ایران آغاز شد</p>
+                    <p class="text-muted">اقتصاد نیوز 20 ساعت پيش</p>
+                  </td>
+                  <td class="td-actions">
+                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
+                      <i class="tim-icons icon-settings"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-center">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="" checked="">
+                        <span class="form-check-sign">
+                          <span class="check"></span>
+                        </span>
+                      </label>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <p class="title">تصاویر جالب از دیدار وزرای خارجه ایران و عربستان</p>
+                    <p class="text-muted">همشهری آنلاین 18 ساعت پيش</p>
+                  </td>
+                  <td class="td-actions">
+                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
+                      <i class="tim-icons icon-settings"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-center">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="" checked="">
+                        <span class="form-check-sign">
+                          <span class="check"></span>
+                        </span>
+                      </label>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <p class="title">جنگنده جدید اردوغان رونمایی شد + عکس</p>
+                    <p class="text-muted">خبرآنلاین ۱۰ ساعت پیش </p>
+                  </td>
+                  <td class="td-actions">
+                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
+                      <i class="tim-icons icon-settings"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-center">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="">
+                        <span class="form-check-sign">
+                          <span class="check"></span>
+                        </span>
+                      </label>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <p class="title">پیام رئیس‌جمهور به سردار اشتری</p>
+                    <p class="text-muted">افکار نیوز ۱۷ ساعت پیش</p>
+                  </td>
+                  <td class="td-actions">
+                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
+                      <i class="tim-icons icon-settings"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-sm-6 text-center">
+      <div class="card  card-tasks text-left">
+        <div class="card-header text-right">
+          <h6 class="title d-inline">برتین های</h6>
+          <p class="card-category d-inline">هفته</p>
+          <div class="dropdown float-left">
+            <a class="btn btn-link dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false"><i class="tim-icons icon-settings-gear-63"></i></a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="#">براساس زمان</a>
+              <a class="dropdown-item" href="#">براساس تعداد کامنت</a>
+              <a class="dropdown-item" href="#">براساس تعداد لایک</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body ">
+          <div class="table-full-width table-responsive">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td class="text-center">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="" checked>
+                        <span class="form-check-sign">
+                          <span class="check"></span>
+                        </span>
+                      </label>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <p class="title">بالگرد ارتش با ۱۰ خدمه مفقود شد</p>
+                    <p class="text-muted">افکار نیوز 9 ساعت پيش</p>
+                  </td>
+                  <td class="td-actions">
+                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
+                      <i class="tim-icons icon-settings"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-center">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="">
+                        <span class="form-check-sign">
+                          <span class="check"></span>
+                        </span>
+                      </label>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <p class="title">افشای نقشه اسرائیل برای حمله به تاسیسات هسته ای ایران /100 جنگنده به سمت ایران می روند
+                    </p>
+                    <p class="text-muted">اقتصاد نیوز 12 ساعت پيش </p>
+                  </td>
+                  <td class="td-actions">
+                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
+                      <i class="tim-icons icon-settings"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-center">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="">
+                        <span class="form-check-sign">
+                          <span class="check"></span>
+                        </span>
+                      </label>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <p class="title">رزمایش نظامی باکو در نزدیکی مرزهای ایران آغاز شد</p>
+                    <p class="text-muted">اقتصاد نیوز 20 ساعت پيش</p>
+                  </td>
+                  <td class="td-actions">
+                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
+                      <i class="tim-icons icon-settings"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-center">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="" checked="">
+                        <span class="form-check-sign">
+                          <span class="check"></span>
+                        </span>
+                      </label>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <p class="title">تصاویر جالب از دیدار وزرای خارجه ایران و عربستان</p>
+                    <p class="text-muted">همشهری آنلاین 18 ساعت پيش</p>
+                  </td>
+                  <td class="td-actions">
+                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
+                      <i class="tim-icons icon-settings"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-center">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="" checked="">
+                        <span class="form-check-sign">
+                          <span class="check"></span>
+                        </span>
+                      </label>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <p class="title">جنگنده جدید اردوغان رونمایی شد + عکس</p>
+                    <p class="text-muted">خبرآنلاین ۱۰ ساعت پیش </p>
+                  </td>
+                  <td class="td-actions">
+                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
+                      <i class="tim-icons icon-settings"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-center">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="">
+                        <span class="form-check-sign">
+                          <span class="check"></span>
+                        </span>
+                      </label>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <p class="title">پیام رئیس‌جمهور به سردار اشتری</p>
+                    <p class="text-muted">افکار نیوز ۱۷ ساعت پیش</p>
+                  </td>
+                  <td class="td-actions">
+                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
+                      <i class="tim-icons icon-settings"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
