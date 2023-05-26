@@ -12,8 +12,7 @@ from django.conf import settings
 
 @login_required(login_url="/login/")
 def index(request):
-    print( f"http://{settings.STATISTIC_API_URL}:10015/get_statistics")
-    url =  f"http://192.168.249.170:10015/get_statistics"
+    url =  f"http://{settings.STATISTIC_API_URL}:10015/get_statistics"
 
     payload = {}
     headers = {
