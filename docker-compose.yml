@@ -60,6 +60,9 @@ services:
       timeout: 10s
       retries: 5
     restart: always
+    networks:
+      - db_network
+      - web_network
   web_api:
     # image: dashboard_api:latest 
     build: ../twitter/
@@ -68,6 +71,9 @@ services:
     volumes:
       - ../mongo-db-volume:/data/db
     restart: always
+    networks:
+      - db_network
+      - web_network
 # Names our volume
 volumes:
   my-db:
