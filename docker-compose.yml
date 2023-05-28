@@ -4,8 +4,8 @@ services:
     container_name: appseed_app
     restart: always
     env_file: .env
-    image: black_dash_appseed-app:latest
-    # build: .
+    # image: black_dash_appseed-app:latest
+    build: .
     expose:
       - '5058'
       - '5005'
@@ -44,11 +44,35 @@ services:
     networks:
       - db_network
       - web_network
-
+  mongodb:
+    image: mongo:5.0
+    ports:
+      - 27017:27017
+    volumes:
+      - ../mongo-db-volume:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+      - MONGO_INITDB_DATABASE=data_pipline
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo mongo:27017/data_pipline --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    restart: always
+  web_api:
+    # image: dashboard_api:latest 
+    build: ../twitter/
+    ports:
+      - 10015:10015
+    volumes:
+      - ../mongo-db-volume:/data/db
+    restart: always
 # Names our volume
 volumes:
   my-db:
   nginx:
+  mongo-db-volume:
 
 
 networks:
