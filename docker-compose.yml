@@ -9,9 +9,6 @@ services:
     expose:
       - '5058'
       - '5005'
-    networks:
-      - db_network
-      - web_network
     depends_on: 
       - db
   nginx:
@@ -22,8 +19,6 @@ services:
       - "5085:5085"
     volumes:
       - ./nginx:/etc/nginx/conf.d
-    networks:
-      - web_network
     depends_on: 
       - appseed-app
   db:
@@ -41,9 +36,7 @@ services:
       - '3306'
     volumes:
       - my-db:/var/lib/mysql
-    networks:
-      - db_network
-      - web_network
+
   mongodb:
     image: mongo:5.0
     ports:
@@ -60,9 +53,7 @@ services:
       timeout: 10s
       retries: 5
     restart: always
-    networks:
-      - db_network
-      - web_network
+
   web_api:
     # image: dashboard_api:latest 
     build: ../twitter/
@@ -71,19 +62,11 @@ services:
     volumes:
       - ../mongo-db-volume:/data/db
     restart: always
-    networks:
-      - db_network
-      - web_network
+
 # Names our volume
 volumes:
   my-db:
   nginx:
   mongo-db-volume:
 
-
-networks:
-  db_network:
-    driver: bridge
-  web_network:
-    driver: bridge
  

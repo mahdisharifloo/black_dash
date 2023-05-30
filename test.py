@@ -1,14 +1,15 @@
 import requests
-import json 
+import json
 
+url = "http://0.0.0.0:10015/get_news"
 
-url = "http://192.168.18.170:10015/get_statistics"
+querystring = {"record_count":"100"}
 
-payload = {}
-headers = {
-'accept': 'application/json'
-}
+payload = ""
+headers = {"accept": "application/json"}
 
-response = requests.request("POST", url, headers=headers, data=payload)
-
-resp = json.loads(response.text)
+response = requests.request("POST", url, data=payload, headers=headers, params=querystring)
+data = json.loads(response.text)
+t1 = data[:50]
+t2 = data[50:]
+print(data)

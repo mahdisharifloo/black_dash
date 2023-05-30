@@ -128,132 +128,29 @@
           <div class="table-full-width table-responsive">
             <table class="table">
               <tbody>
-                <tr>
-                  <td class="text-center">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="" checked>
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <p class="title">بالگرد ارتش با ۱۰ خدمه مفقود شد</p>
-                    <p class="text-muted">افکار نیوز 9 ساعت پيش</p>
-                  </td>
-                  <td class="td-actions">
-                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
-                      <i class="tim-icons icon-settings"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="text-center">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="">
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <p class="title">افشای نقشه اسرائیل برای حمله به تاسیسات هسته ای ایران /100 جنگنده به سمت ایران می روند</p>
-                    <p class="text-muted">اقتصاد نیوز 12 ساعت پيش </p>
-                  </td>
-                  <td class="td-actions">
-                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
-                      <i class="tim-icons icon-settings"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="text-center">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="">
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <p class="title">رزمایش نظامی باکو در نزدیکی مرزهای ایران آغاز شد</p>
-                    <p class="text-muted">اقتصاد نیوز 20 ساعت پيش</p>
-                  </td>
-                  <td class="td-actions">
-                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
-                      <i class="tim-icons icon-settings"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="text-center">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="" checked="">
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <p class="title">تصاویر جالب از دیدار وزرای خارجه ایران و عربستان</p>
-                    <p class="text-muted">همشهری آنلاین 18 ساعت پيش</p>
-                  </td>
-                  <td class="td-actions">
-                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
-                      <i class="tim-icons icon-settings"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="text-center">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="" checked="">
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <p class="title">جنگنده جدید اردوغان رونمایی شد + عکس</p>
-                    <p class="text-muted">خبرآنلاین ۱۰ ساعت پیش </p>
-                  </td>
-                  <td class="td-actions">
-                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
-                      <i class="tim-icons icon-settings"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="text-center">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="">
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <p class="title">پیام رئیس‌جمهور به سردار اشتری</p>
-                    <p class="text-muted">افکار نیوز ۱۷ ساعت پیش</p>
-                  </td>
-                  <td class="td-actions">
-                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
-                      <i class="tim-icons icon-settings"></i>
-                    </button>
-                  </td>
-                </tr>
+                {% for news in rank_news_list1 %}
+                  <tr>
+                    <td class="text-center">
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" value="" checked>
+                          <span class="form-check-sign">
+                            <span class="check"></span>
+                          </span>
+                        </label>
+                      </div>
+                    </td>
+                    <td class="text-right">
+                      <p class="title">{{ news.content }}</p>
+                      <p class="text-muted">{{ news.source }}</p>
+                    </td>
+                    <td class="td-actions">
+                      <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
+                        <i class="tim-icons icon-settings"></i>
+                      </button>
+                    </td>
+                  </tr>
+                {% endfor %}
               </tbody>
             </table>
           </div>
@@ -279,133 +176,29 @@
           <div class="table-full-width table-responsive">
             <table class="table">
               <tbody>
-                <tr>
-                  <td class="text-center">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="" checked>
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <p class="title">بالگرد ارتش با ۱۰ خدمه مفقود شد</p>
-                    <p class="text-muted">افکار نیوز 9 ساعت پيش</p>
-                  </td>
-                  <td class="td-actions">
-                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
-                      <i class="tim-icons icon-settings"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="text-center">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="">
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <p class="title">افشای نقشه اسرائیل برای حمله به تاسیسات هسته ای ایران /100 جنگنده به سمت ایران می روند
-                    </p>
-                    <p class="text-muted">اقتصاد نیوز 12 ساعت پيش </p>
-                  </td>
-                  <td class="td-actions">
-                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
-                      <i class="tim-icons icon-settings"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="text-center">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="">
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <p class="title">رزمایش نظامی باکو در نزدیکی مرزهای ایران آغاز شد</p>
-                    <p class="text-muted">اقتصاد نیوز 20 ساعت پيش</p>
-                  </td>
-                  <td class="td-actions">
-                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
-                      <i class="tim-icons icon-settings"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="text-center">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="" checked="">
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <p class="title">تصاویر جالب از دیدار وزرای خارجه ایران و عربستان</p>
-                    <p class="text-muted">همشهری آنلاین 18 ساعت پيش</p>
-                  </td>
-                  <td class="td-actions">
-                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
-                      <i class="tim-icons icon-settings"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="text-center">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="" checked="">
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <p class="title">جنگنده جدید اردوغان رونمایی شد + عکس</p>
-                    <p class="text-muted">خبرآنلاین ۱۰ ساعت پیش </p>
-                  </td>
-                  <td class="td-actions">
-                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
-                      <i class="tim-icons icon-settings"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="text-center">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input class="form-check-input" type="checkbox" value="">
-                        <span class="form-check-sign">
-                          <span class="check"></span>
-                        </span>
-                      </label>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <p class="title">پیام رئیس‌جمهور به سردار اشتری</p>
-                    <p class="text-muted">افکار نیوز ۱۷ ساعت پیش</p>
-                  </td>
-                  <td class="td-actions">
-                    <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
-                      <i class="tim-icons icon-settings"></i>
-                    </button>
-                  </td>
-                </tr>
+                {% for news in rank_news_list2 %}
+                  <tr>
+                    <td class="text-center">
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" value="" checked>
+                          <span class="form-check-sign">
+                            <span class="check"></span>
+                          </span>
+                        </label>
+                      </div>
+                    </td>
+                    <td class="text-right">
+                      <p class="title">{{ news.content }}</p>
+                      <p class="text-muted">{{ news.source }}</p>
+                    </td>
+                    <td class="td-actions">
+                      <button type="button" rel="tooltip" title="" class="btn btn-link" data-original-title="مهمة تحرير">
+                        <i class="tim-icons icon-settings"></i>
+                      </button>
+                    </td>
+                  </tr>
+                {% endfor %}
               </tbody>
             </table>
           </div>
