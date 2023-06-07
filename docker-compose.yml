@@ -63,6 +63,25 @@ services:
       - ../mongo-db-volume:/data/db
     restart: always
 
+  nlp:
+    # image: nlp:latest
+    build: ../ner/
+    ports:
+      - 10020:10020
+    restart: always
+
+  sentiment:
+    # image: sentiment_analysis:latest
+    build: ../sentiment_analysis/
+    ports:
+      - 10021:10021
+    restart: always
+
+  ner_tagger:
+    # image: ner_tagger:latest
+    build: ../ner_tagger/
+    restart: always
+
 # Names our volume
 volumes:
   my-db:
